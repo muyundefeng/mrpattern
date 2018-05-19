@@ -1,4 +1,4 @@
-package bus_data;
+package rm_duplicate;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
@@ -19,14 +19,14 @@ public class driver {
 		Job job = Job.getInstance(conf, "EarlistAndLongest");
 		job.setJarByClass(driver.class);
 
-		job.setMapOutputKeyClass(NullWritable.class);
-		job.setMapOutputValueClass(Text.class);
+//		job.setMapOutputKeyClass(NullWritable.class);
+//		job.setMapOutputValueClass(Text.class);
 		job.setOutputKeyClass(Text.class);
 		job.setOutputValueClass(NullWritable.class);
 
-		job.setMapperClass(MyMapper.class);
-		job.setCombinerClass(MyReducer.class);
-		job.setReducerClass(MyReducer.class);
+		job.setMapperClass(RmDuplicateMapper.class);
+//		job.setCombinerClass(MyReducer.class);
+		job.setReducerClass(RmDuplicateReducer.class);
 
 		job.setInputFormatClass(TextInputFormat.class);
 		job.setOutputFormatClass(TextOutputFormat.class);

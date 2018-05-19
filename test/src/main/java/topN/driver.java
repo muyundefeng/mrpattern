@@ -1,4 +1,4 @@
-package bus_data;
+package topN;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
@@ -24,9 +24,9 @@ public class driver {
 		job.setOutputKeyClass(Text.class);
 		job.setOutputValueClass(NullWritable.class);
 
-		job.setMapperClass(MyMapper.class);
-		job.setCombinerClass(MyReducer.class);
-		job.setReducerClass(MyReducer.class);
+		job.setMapperClass(TopNMapper.class);
+//		job.setCombinerClass(MyReducer.class);
+		job.setReducerClass(TopNReducer.class);
 
 		job.setInputFormatClass(TextInputFormat.class);
 		job.setOutputFormatClass(TextOutputFormat.class);
